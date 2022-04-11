@@ -3,39 +3,34 @@ import { GoSearch } from 'react-icons/go';
 
 function Search(): JSX.Element {
   return (
-    <SearchBox>
-      <SearchInput placeholder="Repository를 입력해주세요!" />
-      <SearchButton>
-        <GoSearch />
-      </SearchButton>
-    </SearchBox>
+    <>
+      <SearchIcon />
+      <SearchInput placeholder="Search" type="search" />
+    </>
   );
 }
 
 export default Search;
 
-const SearchBox = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 7px 10px 7px 30px;
-  align-items: center;
-  border-radius: 20px;
-  box-sizing: border-box;
-  justify-content: space-between;
-  border: 1px solid black;
+const SearchIcon = styled(GoSearch)`
+  position: absolute;
+  z-index: 10;
+  color: #fff;
+  font-size: 20px;
+  top: 15px;
+  left: 15px;
 `;
 const SearchInput = styled.input`
-  width: 500px;
-  height: 40px;
-  outline: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 12px;
+  outline: none;
   border: none;
-`;
-const SearchButton = styled.button`
-  background-color: transparent;
-  border: 0;
-  font-size: 15px;
-  cursor: pointer;
-  &:hover {
-    color: green;
-  }
+  background: #1d1b31;
+  font-size: 18px;
+  color: #fff;
+  padding-left: 60px;
 `;

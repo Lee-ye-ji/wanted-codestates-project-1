@@ -4,14 +4,14 @@ import theme from './styles/theme';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import StoredPage from './pages/StoredPage';
-import Menu from './components/Menu';
+import SideBar from './components/SideBar';
 
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
-        <Menu />
+        <SideBar />
         <Routes>
           <Route path="/" element={<SearchPage />} />
           <Route path="/store" element={<StoredPage />} />

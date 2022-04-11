@@ -1,24 +1,18 @@
 import styled from 'styled-components';
-import Search from '../components/Search';
 
 function SearchPage(): JSX.Element {
   return (
-    <Template>
-      <Center>
-        <Search />
-      </Center>
-    </Template>
+    <Page>
+      <h1>SearchPage</h1>
+    </Page>
   );
 }
 
 export default SearchPage;
 
-const Template = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-`;
-const Center = styled.div`
-  /* border: 1px solid red; */
+const Page = styled.section`
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 240px);
+  left: 280px;
 `;
