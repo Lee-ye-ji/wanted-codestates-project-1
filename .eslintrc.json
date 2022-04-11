@@ -16,7 +16,7 @@
     "semi": 2,
     "@typescript-eslint/explicit-function-return-type": [
       "warn",
-      { "allowTypedFunctionExpressions": true }
+      { "allowTypedFunctionExpressions": true, "allowExpressions": true }
     ]
   },
   "settings": {
