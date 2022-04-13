@@ -1,12 +1,12 @@
 const color = {
-  black: '#000',
   white: '#fff',
-  header_bg: '#11101d',
+  black: '#000',
+  main_black: '#11101d',
+  gray: '#666',
 };
 
 const size = {
-  header_active: '240px',
-  header: '78px',
+  header: '240px',
 };
 
 const theme = {

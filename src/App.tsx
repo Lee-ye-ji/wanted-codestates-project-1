@@ -4,7 +4,7 @@ import theme from './styles/theme';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import StoredPage from './pages/StoredPage';
-import SideBar from './components/SideBar';
+import SideBar from './components/organisms/SideBar';
 
 function App(): JSX.Element {
   return (
