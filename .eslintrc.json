@@ -14,10 +14,9 @@
   },
   "rules": {
     "semi": 2,
-    "@typescript-eslint/explicit-function-return-type": [
-      "warn",
-      { "allowTypedFunctionExpressions": true }
-    ]
+    "react-hooks/exhaustive-deps": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": 0
   },
   "settings": {
     "react": {

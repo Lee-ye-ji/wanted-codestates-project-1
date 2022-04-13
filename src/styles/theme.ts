@@ -1,13 +1,17 @@
 const color = {
-  header_bg: '#24292f',
-  black: '#000',
   white: '#fff',
-  green: '#2da44e',
-  dark_green: '#116329',
+  black: '#000',
+  main_black: '#11101d',
+  gray: '#666',
+};
+
+const size = {
+  header: '240px',
 };
 
 const theme = {
   color,
+  size,
 };
 
 export default theme;
