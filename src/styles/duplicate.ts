@@ -13,3 +13,8 @@ export const button = css`
   font-weight: 400;
   margin: 0.5em;
 `;
+
+export const notiIcon = css`
+  font-size: 20px;
+  height: 50px;
+`;
