@@ -1,19 +1,49 @@
 import styled, { css } from 'styled-components';
 import { RepositoryItem } from '../../interfaces/repository';
-import { eclipse, button } from '../../styles/duplicate';
+import { useAppDispatch, useAppSelector } from '../../store/config';
+import { setSave } from '../../store/slices/saveSlice';
+import { button, eclipse } from '../../styles/duplicate';
+import { useState } from 'react';
+import Notification from '../atoms/Notification';
+import Profile from '../atoms/Profile';
+import Title from '../atoms/Title';
+import User from '../atoms/User';
 
 function Card({ data }: { data: RepositoryItem }): JSX.Element {
+  const [warning, setWarning] = useState(false);
+  const [dup, setDup] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const dispatch = useAppDispatch();
+  const saveRepo = useAppSelector((state) => state.save.repoList);
+
+  const onClickCard = () => {
+    const isDup = saveRepo.filter((item) => item.id === data.id);
+    if (isDup.length === 1) {
+      setDup(!dup);
+    } else if (saveRepo.length < 4) {
+      setSuccess(!success);
+      dispatch(setSave(data));
+    } else {
+      setWarning(!warning);
+    }
+  };
+
   return (
-    <Wrapper>
-      <Profile src={data.avatar} />
-      <Content>
-        <Title>{data.title}</Title>
-        <User>{data.user}</User>
-        <Desc>{data.desc}</Desc>
-        <Date>{data.date}</Date>
-        <Save disabled={data.saved}>저장하기</Save>
-      </Content>
-    </Wrapper>
+    <>
+      {success && <Notification type="success" message="저장되었습니다." />}
+      {warning && <Notification type="warning" message="더 이상 저장할 수 없습니다." />}
+      {dup && <Notification type="warning" message="이미 저장된 데이터입니다." />}
+      <Wrapper>
+        <Content>
+          <Profile src={data.avatar} size="100px" />
+          <Title>{data.title}</Title>
+          <User>{data.user}</User>
+          <Desc>{data.desc}</Desc>
+          <Date>{data.date}</Date>
+          <Save onClick={onClickCard}>저장하기</Save>
+        </Content>
+      </Wrapper>
+    </>
   );
 }
 
@@ -30,37 +60,13 @@ const Wrapper = styled.div`
 const Content = styled.div`
   margin: 0 auto;
   max-width: 200px;
-`;
-
-const Profile = styled.img`
-  width: 100px;
-  height: 100px;
-  padding: 0.5em;
-  border-radius: 50%;
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: bold;
-  ${eclipse}
-`;
-
-const User = styled.h2`
-  font-size: 15px;
-  color: ${({ theme }) => theme.color.gray};
-  font-weight: bold;
-  ${eclipse}
+  padding: 10px 0;
 `;
 
 const Desc = styled.p`
-  font-size: 12px;
+  font-size: 10px;
   margin: 0.5em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  ${eclipse}
 `;
 
 const Date = styled.p`

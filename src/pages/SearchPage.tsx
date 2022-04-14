@@ -5,6 +5,7 @@ import { useAppSelector } from '../store/config';
 
 function SearchPage(): JSX.Element {
   const repoData = useAppSelector((state) => state.search.repoList);
+
   return (
     <Page>
       <Search />
