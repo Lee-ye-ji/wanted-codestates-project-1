@@ -1,5 +1,5 @@
 export interface RepositoryItem {
-  id: number;
+  id: string;
   avatar: string;
   title: string;
   user: string;

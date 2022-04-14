@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import Notification from '../components/atoms/Notification';
 import Card from '../components/molecules/Card';
 import Search from '../components/molecules/Search';
 import { useAppSelector } from '../store/config';
 
 function SearchPage(): JSX.Element {
   const repoData = useAppSelector((state) => state.search.repoList);
+
   return (
     <Page>
-      <Notification type="success" message="저장이 완료되었습니다." />
       <Search />
       {repoData?.length === 0 ? (
         <Center>검색을 통해 Repository를 저장해주세요!</Center>

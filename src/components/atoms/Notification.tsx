@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { IoCheckmarkOutline, IoAlertOutline, IoCloseOutline, IoLogoOctocat } from 'react-icons/io5';
+import { IoCheckmarkOutline, IoAlertOutline, IoBanOutline, IoLogoOctocat } from 'react-icons/io5';
 import { notiIcon } from '../../styles/duplicate';
-import { slideUp } from '../../styles/transitions';
+import { slideRight } from '../../styles/transitions';
 import { handlerColorType } from '../../styles/color';
 
 const NotificationType = (type: string) => {
@@ -37,7 +37,8 @@ const Wrapper = styled.div`
   position: fixed;
   right: 10px;
   top: 10px;
-  animation: ${slideUp} 5s;
+  opacity: 0;
+  animation: ${slideRight} 2s;
 `;
 
 const Content = styled.div`
@@ -56,7 +57,7 @@ const SuccessIcon = styled(IoCheckmarkOutline)`
 const WarningIcon = styled(IoAlertOutline)`
   ${notiIcon}
 `;
-const ErrorIcon = styled(IoCloseOutline)`
+const ErrorIcon = styled(IoBanOutline)`
   ${notiIcon}
 `;
 const CatIcon = styled(IoLogoOctocat)`

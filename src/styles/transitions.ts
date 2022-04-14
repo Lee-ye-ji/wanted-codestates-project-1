@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 
-export const slideUp = keyframes`
+export const slideRight = keyframes`
   0% {
     opacity: 0;
     transform: translateX(100%);

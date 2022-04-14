@@ -7,6 +7,14 @@ export const eclipse = css`
   margin: 0.5em;
 `;
 
+export const twoLineEclipse = css`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
 export const button = css`
   border: none;
   border-radius: 10px;

@@ -24,7 +24,6 @@ export const SearchThunk = {
               user: item.owner.login,
               desc: item.description,
               date: item.updated_at,
-              saved: false,
             } as RepositoryItem)
         );
         return newData;

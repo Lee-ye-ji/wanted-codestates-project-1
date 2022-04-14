@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { GoHome, GoRepo } from 'react-icons/go';
 import { NavLink } from 'react-router-dom';
 import Logo from '../atoms/Logo';
+import SaveStorage from './SaveStorage';
 
 function SideBar(): JSX.Element {
   return (
@@ -21,6 +22,7 @@ function SideBar(): JSX.Element {
           </NavLink>
         </Link>
       </Nav>
+      <SaveStorage />
     </SideNav>
   );
 }
