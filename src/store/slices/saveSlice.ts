@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RepositoryItem, RepositoryState } from '../../interfaces/repository';
+import { RepositoryItem, SaveRepoState } from '../../interfaces/repository';
 
-const initialState: RepositoryState = { repoList: [] };
+const initialState: SaveRepoState = { repoList: [] };
 export const saveSlice = createSlice({
   name: 'search',
   initialState,

@@ -33,7 +33,7 @@ export default Notification;
 const Wrapper = styled.div`
   width: 250px;
   height: 50px;
-  z-index: 20;
+  z-index: 90;
   position: fixed;
   right: 10px;
   top: 10px;

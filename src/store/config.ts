@@ -5,8 +5,9 @@ import { persistReducer } from 'redux-persist';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import searchSlice from './slices/searchSlice';
+import repoSlice from './slices/repoSlice';
 import saveSlice from './slices/saveSlice';
+import issueSlice from './slices/issueSlice';
 
 const logger = createLogger();
 
@@ -20,8 +21,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  search: searchSlice.reducer,
+  repo: repoSlice.reducer,
   save: saveSlice.reducer,
+  issue: issueSlice.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const initialState = {};

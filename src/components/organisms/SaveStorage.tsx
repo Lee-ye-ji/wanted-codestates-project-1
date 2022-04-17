@@ -11,7 +11,7 @@ function SaveStorage(): JSX.Element {
 
   return (
     <>
-      {error && <Notification type="error" message="삭제되었습니다." />}
+      {error && saveRepo.length === 0 && <Notification type="error" message="삭제되었습니다." />}
       <Storage>
         {saveRepo.length === 0 ? (
           <Empty>

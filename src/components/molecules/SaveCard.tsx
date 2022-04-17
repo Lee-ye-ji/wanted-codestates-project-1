@@ -8,6 +8,9 @@ import { eclipse } from '../../styles/duplicate';
 import { useAppDispatch } from '../../store/config';
 import { setDelete } from '../../store/slices/saveSlice';
 import { Dispatch, SetStateAction } from 'react';
+import { issueThunk } from '../../store/thunk/issueThunk';
+import { useNavigate } from 'react-router-dom';
+import { setResetIssue } from '../../store/slices/issueSlice';
 
 function SaveCard({
   data,
@@ -19,14 +22,25 @@ function SaveCard({
   setError: Dispatch<SetStateAction<boolean>>;
 }): JSX.Element {
   const dispatch = useAppDispatch();
-  const deleteClick = () => {
+  const navigate = useNavigate();
+  const deleteClick = (e: React.SyntheticEvent<EventTarget>) => {
+    e.stopPropagation();
     setError(!error);
     dispatch(setDelete(data.id));
+    dispatch(setResetIssue([]));
+    navigate('/');
+  };
+
+  const onIssueClick = (data: RepositoryItem) => {
+    const owner = data.user;
+    const repo = data.title;
+    dispatch(issueThunk.getIssue({ owner, repo }));
+    navigate(`/issue/${owner}/${repo}`);
   };
 
   return (
     <>
-      <SaveWrapper>
+      <SaveWrapper onClick={() => onIssueClick(data)}>
         <Top>
           <Profile src={data.avatar} size="30px" />
           <Title>{data.title}</Title>

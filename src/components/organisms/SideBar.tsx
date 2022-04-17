@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 import { GoHome, GoRepo } from 'react-icons/go';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../atoms/Logo';
 import SaveStorage from './SaveStorage';
+import { useAppSelector } from '../../store/config';
 
 function SideBar(): JSX.Element {
+  const saveRepo = useAppSelector((state) => state.save.repoList);
+  const navigate = useNavigate();
+  const issueClick = () => {
+    const owner = saveRepo[0]?.user;
+    const repo = saveRepo[0]?.title;
+    navigate(`/issue/${owner}/${repo}`);
+  };
   return (
     <SideNav>
       <Logo />
@@ -12,13 +20,13 @@ function SideBar(): JSX.Element {
         <Link>
           <NavLink to="/">
             <GoHome />
-            <span>HOME</span>
+            <span>SEARCH</span>
           </NavLink>
         </Link>
-        <Link>
-          <NavLink to="/store">
+        <Link onClick={issueClick}>
+          <NavLink to="/issue">
             <GoRepo />
-            <span>STORE</span>
+            <span>ISSUE</span>
           </NavLink>
         </Link>
       </Nav>

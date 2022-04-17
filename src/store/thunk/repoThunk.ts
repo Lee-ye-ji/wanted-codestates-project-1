@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api';
 import { RepositoryItem } from '../../interfaces/repository';
 
-export const SearchThunk = {
+export const repoThunk = {
   getRepo: createAsyncThunk(
     'search/getRepo',
     async ({ keyword, page }: { keyword: string; page: number }, thunkAPI) => {
@@ -14,6 +14,7 @@ export const SearchThunk = {
             page,
           },
         });
+        console.log('repo', response);
         const data = response.data?.items;
         const newData = data.map(
           (item: any) =>
