@@ -12,6 +12,8 @@ export interface SaveRepoState {
 }
 
 export interface RepositoryState extends SaveRepoState {
-  // loading, error, keyword, 검색된 레파지토리의 갯수도 추가
   loading: boolean;
+  total: number;
+  keyword: string;
+  error: any;
 }
