@@ -3,28 +3,24 @@ import Search from '../components/molecules/Search';
 import RepoCard from '../components/organisms/RepoCard';
 import CenterTemplate from '../components/templates/CenterTemplate';
 import ContentTemplate from '../components/templates/ContentTemplate';
-import GridTemplate from '../components/templates/GridTemplate';
+import ErrorTemplate from '../components/templates/ErrorTemplate';
 import { useAppSelector } from '../store/config';
 
 function SearchPage(): JSX.Element {
-  const repoData = useAppSelector((state) => state.repo.repoList);
-  const loading = useAppSelector((state) => state.repo.loading);
+  const { loading, repoList, error } = useAppSelector((state) => state.repo);
   return (
     <ContentTemplate>
       <Search />
-      {repoData?.length === 0 ? (
+      {repoList?.length === 0 ? (
         <>
-          <CenterTemplate>검색을 통해 Repository를 저장해주세요!</CenterTemplate>
-          {!loading && (
-            <CenterTemplate>
-              <Loading />
-            </CenterTemplate>
+          {loading ? (
+            <CenterTemplate>{error.length !== 0 ? <ErrorTemplate /> : <Loading />}</CenterTemplate>
+          ) : (
+            <CenterTemplate>검색을 통해 Repository를 저장해주세요!</CenterTemplate>
           )}
         </>
       ) : (
-        <GridTemplate>
-          <RepoCard />
-        </GridTemplate>
+        <RepoCard />
       )}
     </ContentTemplate>
   );

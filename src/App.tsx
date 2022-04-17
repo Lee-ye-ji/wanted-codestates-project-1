@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import IssuePage from './pages/IssuePage';
 import SideBar from './components/organisms/SideBar';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<SearchPage />} />
           <Route path="/issue/:owner/:repo" element={<IssuePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </ThemeProvider>

@@ -7,4 +7,5 @@ export interface IssueItem extends RepositoryItem {
 export interface IssueState {
   loading: boolean;
   issueList: IssueItem[];
+  error: any;
 }

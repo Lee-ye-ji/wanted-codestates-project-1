@@ -14,8 +14,8 @@ export const repoThunk = {
             page,
           },
         });
-        console.log('repo', response);
         const data = response.data?.items;
+        const total = response.data?.total_count;
         const newData = data.map(
           (item: any) =>
             ({
@@ -27,7 +27,7 @@ export const repoThunk = {
               date: item.updated_at,
             } as RepositoryItem)
         );
-        return newData;
+        return { newData, total, keyword };
       } catch (err) {
         return thunkAPI.rejectWithValue(err);
       }

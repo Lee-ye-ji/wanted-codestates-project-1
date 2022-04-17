@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IssueState } from '../../interfaces/issue';
 import { issueThunk } from '../thunk/issueThunk';
 
-const initialState: IssueState = { loading: false, issueList: [] };
+const initialState: IssueState = { loading: false, issueList: [], error: '' };
 export const issueSlice = createSlice({
   name: 'issue',
   initialState,
@@ -20,7 +20,7 @@ export const issueSlice = createSlice({
         state.issueList = action.payload;
       })
       .addCase(issueThunk.getIssue.rejected, (state, action) => {
-        console.log(action.payload);
+        state.error = action.payload;
       });
   },
 });

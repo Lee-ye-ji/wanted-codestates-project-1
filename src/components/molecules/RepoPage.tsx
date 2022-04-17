@@ -1,27 +1,38 @@
 import styled from 'styled-components';
 import { pageState } from '../../interfaces/page';
+import { useAppDispatch, useAppSelector } from '../../store/config';
+import { repoThunk } from '../../store/thunk/repoThunk';
 
-function Pagenation({ total, limit, page, setPage }: pageState): JSX.Element {
-  const numPages = Math.ceil(total / limit);
-  const numArr = Array.from({ length: numPages }, (v, i) => i + 1);
+function RepoPage({ total, page, setPage }: pageState): JSX.Element {
+  const dispatch = useAppDispatch();
+  const numArr = Array.from({ length: total }, (v, i) => i + 1);
+  const keyword = useAppSelector((state) => state.repo.keyword);
+  const onPageClick = (p: number) => {
+    setPage(p);
+    dispatch(repoThunk.getRepo({ keyword, page }));
+  };
   return (
     <Nav>
-      <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
+      <Button onClick={() => onPageClick(page - 1)} disabled={page === 1}>
         &lt;
       </Button>
       {numArr.map((_, i) => (
-        <Button key={i + 1} onClick={() => setPage(i + 1)} className={page === i + 1 ? 'page' : ''}>
+        <Button
+          key={i + 1}
+          onClick={() => onPageClick(i + 1)}
+          className={page === i + 1 ? 'page' : ''}
+        >
           {i + 1}
         </Button>
       ))}
-      <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
+      <Button onClick={() => onPageClick(page + 1)} disabled={page === total}>
         &gt;
       </Button>
     </Nav>
   );
 }
 
-export default Pagenation;
+export default RepoPage;
 
 const Nav = styled.nav`
   display: flex;

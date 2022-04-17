@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ReactChildType } from '../../interfaces/react';
+import { ReactMultipleChildType } from '../../interfaces/react';
 
-function CenterTemplate({ children }: ReactChildType): JSX.Element {
+function CenterTemplate({ children }: ReactMultipleChildType): JSX.Element {
   return <Center>{children}</Center>;
 }
 
@@ -14,4 +14,5 @@ const Center = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 90vh;
+  text-align: center;
 `;

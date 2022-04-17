@@ -6,27 +6,31 @@ import Loading from '../components/atoms/Loading';
 import { useEffect } from 'react';
 import { issueThunk } from '../store/thunk/issueThunk';
 import { useParams } from 'react-router';
+import ErrorTemplate from '../components/templates/ErrorTemplate';
 
 function IssuePage(): JSX.Element {
   const dispatch = useAppDispatch();
   const saveRepo = useAppSelector((state) => state.save.repoList);
-  const loading = useAppSelector((state) => state.issue.loading);
-  const issueData = useAppSelector((state) => state.issue.issueList);
+  const { loading, issueList, error } = useAppSelector((state) => state.issue);
   const { owner, repo } = useParams();
 
   useEffect(() => {
-    if (issueData.length === 0 && saveRepo.length !== 0) {
+    if (issueList.length === 0 && saveRepo.length !== 0) {
       dispatch(issueThunk.getIssue({ owner, repo }));
     }
   }, []);
 
   return (
     <ContentTemplate>
-      {saveRepo?.length === 0 ? (
+      {error.length !== 0 ? (
+        <CenterTemplate>
+          <ErrorTemplate />
+        </CenterTemplate>
+      ) : saveRepo?.length === 0 ? (
         <CenterTemplate>검색을 통해 Repository를 저장해주세요!</CenterTemplate>
       ) : (
         <>
-          {!loading && issueData.length === 0 ? (
+          {loading && issueList.length === 0 ? (
             <CenterTemplate>
               <Loading />
             </CenterTemplate>
