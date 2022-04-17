@@ -5,10 +5,13 @@ export interface RepositoryItem {
   user: string;
   desc: string;
   date: string;
-  saved: boolean;
 }
 
-export interface RepositoryState {
-  // loading, error, keyword, 검색된 레파지토리의 갯수도 추가
+export interface SaveRepoState {
   repoList: RepositoryItem[];
+}
+
+export interface RepositoryState extends SaveRepoState {
+  // loading, error, keyword, 검색된 레파지토리의 갯수도 추가
+  loading: boolean;
 }

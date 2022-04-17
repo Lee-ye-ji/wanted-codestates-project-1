@@ -2,6 +2,7 @@ const color = {
   white: '#fff',
   black: '#000',
   main_black: '#11101d',
+  main_dark_green: '#2b8543',
   main_green: '#40C463',
   gray: '#666',
   success: '#216E39',

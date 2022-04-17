@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { GoSearch } from 'react-icons/go';
 import { useState, useCallback } from 'react';
 import { useAppDispatch } from '../../store/config';
-import { SearchThunk } from '../../store/thunk/searchThunk';
+import { repoThunk } from '../../store/thunk/repoThunk';
 
 function Search(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ function Search(): JSX.Element {
 
   const searchOnClick = () => {
     const page = 1;
-    dispatch(SearchThunk.getRepo({ keyword, page }));
+    dispatch(repoThunk.getRepo({ keyword, page }));
   };
 
   const searchOnKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {

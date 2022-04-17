@@ -1,45 +1,33 @@
-import styled from 'styled-components';
-import Card from '../components/molecules/Card';
+import Loading from '../components/atoms/Loading';
 import Search from '../components/molecules/Search';
+import RepoCard from '../components/organisms/RepoCard';
+import CenterTemplate from '../components/templates/CenterTemplate';
+import ContentTemplate from '../components/templates/ContentTemplate';
+import GridTemplate from '../components/templates/GridTemplate';
 import { useAppSelector } from '../store/config';
 
 function SearchPage(): JSX.Element {
-  const repoData = useAppSelector((state) => state.search.repoList);
-
+  const repoData = useAppSelector((state) => state.repo.repoList);
+  const loading = useAppSelector((state) => state.repo.loading);
   return (
-    <Page>
+    <ContentTemplate>
       <Search />
       {repoData?.length === 0 ? (
-        <Center>검색을 통해 Repository를 저장해주세요!</Center>
+        <>
+          <CenterTemplate>검색을 통해 Repository를 저장해주세요!</CenterTemplate>
+          {!loading && (
+            <CenterTemplate>
+              <Loading />
+            </CenterTemplate>
+          )}
+        </>
       ) : (
-        <Container>
-          {repoData.map((item) => (
-            <Card data={item} />
-          ))}
-        </Container>
+        <GridTemplate>
+          <RepoCard />
+        </GridTemplate>
       )}
-    </Page>
+    </ContentTemplate>
   );
 }
 
 export default SearchPage;
-
-const Page = styled.section`
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 300px);
-  left: 280px;
-`;
-
-const Center = styled.div`
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-const Container = styled.div`
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 30px;
-`;
