@@ -4,7 +4,7 @@ Github 저장소를 등록하고, 등록한 저장소의 이슈를 모아 보여
 
 ## 사용한 기술 스택
 
-<img src="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=000"/> <img src="https://img.shields.io/badge/Redux Toolkit-7248B6.svg?&style=for-the-badge&logo=Redux&logoColor=fff"/> <img src="https://img.shields.io/badge/Styled Components-E6526F.svg?&style=for-the-badge&logo=StyledComponents&logoColor=fff"/>
+<img src="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=000"/> <img src="https://img.shields.io/badge/Typescript-2D79C7.svg?&style=for-the-badge&logo=Typescript&logoColor=fff"/> <img src="https://img.shields.io/badge/Redux Toolkit-7248B6.svg?&style=for-the-badge&logo=Redux&logoColor=fff"/> <img src="https://img.shields.io/badge/Styled Components-E6526F.svg?&style=for-the-badge&logo=StyledComponents&logoColor=fff"/> 
 
 ## 프로젝트 실행 방법
 
