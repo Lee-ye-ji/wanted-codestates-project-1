@@ -14,18 +14,18 @@ import { setResetIssue } from '../../store/slices/issueSlice';
 
 function SaveCard({
   data,
-  error,
-  setError,
+  erase,
+  setErase,
 }: {
   data: RepositoryItem;
-  error: boolean;
-  setError: Dispatch<SetStateAction<boolean>>;
+  erase: boolean;
+  setErase: Dispatch<SetStateAction<boolean>>;
 }): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const deleteClick = (e: React.SyntheticEvent<EventTarget>) => {
     e.stopPropagation();
-    setError(!error);
+    setErase(!erase);
     dispatch(setDelete(data.id));
     dispatch(setResetIssue([]));
     navigate('/');

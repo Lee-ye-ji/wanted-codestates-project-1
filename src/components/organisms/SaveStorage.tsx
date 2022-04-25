@@ -7,11 +7,11 @@ import Notification from '../atoms/Notification';
 
 function SaveStorage(): JSX.Element {
   const saveRepo = useAppSelector((state) => state.save.repoList);
-  const [error, setError] = useState(false);
+  const [erase, setErase] = useState(false);
 
   return (
     <>
-      {error && saveRepo.length === 0 && <Notification type="error" message="삭제되었습니다." />}
+      {erase && <Notification type="error" message="삭제되었습니다." />}
       <Storage>
         {saveRepo.length === 0 ? (
           <Empty>
@@ -19,7 +19,7 @@ function SaveStorage(): JSX.Element {
             <p>저장된 데이터가 없습니다</p>
           </Empty>
         ) : (
-          saveRepo.map((item) => <SaveCard data={item} error={error} setError={setError} />)
+          saveRepo.map((item) => <SaveCard data={item} erase={erase} setErase={setErase} />)
         )}
       </Storage>
     </>
